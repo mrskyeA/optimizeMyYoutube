@@ -1,4 +1,6 @@
 <script>
+	import EditFlowsPanel from "$lib/EditFlowsPanel.svelte";
+	import FlowInventory from "$lib/FlowInventory.svelte";
 	import SearchForVideo from "$lib/SearchForVideo.svelte";
 
 	
@@ -8,5 +10,5 @@
 	<meta name="description" content="Svelte demo app" />
 </svelte:head>
 <div>
-	<SearchForVideo/>
+	<EditFlowsPanel/>
 </div>
