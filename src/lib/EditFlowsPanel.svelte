@@ -3,10 +3,15 @@
     import SearchForVideo from "./SearchForVideo.svelte";
     import { get } from "svelte/store";
     import { selectedFlow } from "./store";
+	import FlowsPlayList from "./FlowsPlayList.svelte";
     $:selectedFlowString="";
     selectedFlow.subscribe((e)=>{
+        if(e == null){
+            addingSongs = false;
+        }
         selectedFlowString=JSON.stringify(e);
-    })
+    });
+    let addingSongs = false;
 </script>
 {selectedFlowString}
 <div id = "container">
@@ -15,7 +20,22 @@
     </div>
     <div id = "videoSearch">
         {#if $selectedFlow != null}
-            <SearchForVideo/>
+            {#if addingSongs}
+                <div on:click={()=>{
+                    addingSongs = false;
+                }}>
+                    <button>Back</button>
+                    <SearchForVideo/>
+                </div>
+                
+            {:else}
+            <div>
+                <button on:click={()=>{
+                    addingSongs = true;
+                }}>Add Songs</button>
+                    <FlowsPlayList/>
+                </div>
+            {/if}
         {/if}
     </div>
     
