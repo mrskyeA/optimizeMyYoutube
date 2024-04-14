@@ -1,9 +1,6 @@
 <script>
 	import Header from './Header.svelte';
 	import './styles.css';
-	import { setFlows,setApiKey } from '$lib/store';
-    setFlows();
-	setApiKey();
 </script>
 
 <div class="app">

@@ -1,27 +1,25 @@
 <script lang="ts">
-    import { getFlows, setFlows} from "./store";
-    const flows = getFlows();
-    let selectedFlow:flowData | null = null;
-    
+    import { get } from "svelte/store";
+    import { flows,selectedFlow} from "./store";
+    function onClick(event:MouseEvent){
+        if(!event.target.className.startsWith("flowItem")){
+            selectedFlow.set(null);
+        }
+    }
 </script>
-<div>
-    <div id = "flowList">
-        {#each $flows as flow}
-            <button class = "flowItem" on:click={()=>{
-                selectedFlow=flow;
-            }} on:blur ={()=>{
-                if(selectedFlow == flow){
-                    selectedFlow = null;
-                }
-            }}>
-                <input bind:value={flow.name}>
-        </button>
-        {/each}
-    </div>
-    
+<div id = "flowList" on:click = {onClick}>
+    {#each $flows as flow}
+        <button class = "flowItem" on:click={()=>{
+            selectedFlow.set(flow);
+        }}>
+            <input bind:value={flow.name}>
+    </button>
+    {/each}
 </div>
 <style>
+
     #flowList{
+        flex-grow:1;
         display:flex;
         gap:10px;
     }

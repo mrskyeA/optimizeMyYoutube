@@ -41,7 +41,7 @@
     <div id = "formContainer">
         <form>
             <label for="youtubeSearch">YouTube Video/Song Name:</label>
-            <input type = "text" name="youtubeSearch">
+            <input type = "text" name="youtubeSearch" id="youtubeSearch">
             <input type = "submit" value = "Search">
         </form>
     </div>

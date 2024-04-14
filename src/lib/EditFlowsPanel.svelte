@@ -1,13 +1,22 @@
 <script>
 	import FlowInventory from "./FlowInventory.svelte";
     import SearchForVideo from "./SearchForVideo.svelte";
+    import { get } from "svelte/store";
+    import { selectedFlow } from "./store";
+    $:selectedFlowString="";
+    selectedFlow.subscribe((e)=>{
+        selectedFlowString=JSON.stringify(e);
+    })
 </script>
+{selectedFlowString}
 <div id = "container">
     <div id = "flowInventory">
         <FlowInventory/>
     </div>
     <div id = "videoSearch">
-        <SearchForVideo/>
+        {#if $selectedFlow != null}
+            <SearchForVideo/>
+        {/if}
     </div>
     
 </div>
@@ -19,6 +28,8 @@
         flex-direction: row;
     }
     #flowInventory{
+        display:flex;
+        flex-direction:column;
         flex-grow: 1;
         height:100%;
     }
