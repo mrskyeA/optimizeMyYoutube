@@ -1,7 +1,6 @@
 <script>
 	import FlowInventory from "./FlowInventory.svelte";
     import SearchForVideo from "./SearchForVideo.svelte";
-
 </script>
 <div id = "container">
     <div id = "flowInventory">
@@ -14,6 +13,7 @@
 </div>
 <style>
     #container{
+        flex-grow:1;
         background-color: black;
         display:flex;
         flex-direction: row;
@@ -23,6 +23,8 @@
         height:100%;
     }
     #videoSearch{
+        display:flex;
+        flex-direction: column;
         background-color: darkblue;
         height:100%;
     }

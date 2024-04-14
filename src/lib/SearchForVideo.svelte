@@ -19,7 +19,7 @@
             thumbnailUrl:"https://i.ytimg.com/vi/GgGPuuGNPAE/hqdefault.jpg?sqp=-oaymwEbCKgBEF5IVfKriqkDDggBFQAAiEIYAXABwAEG&rs=AOn4CLC53yjMrVtkhcBJRdvh86Zc5VJklw",
             songUrl:""
         }
-    ]
+    ];
 </script>
 <div id = "layout">
     
@@ -38,22 +38,34 @@
             </li>
         {/each}
     </ul>
-    <form>
-        <label for="youtubeSearch">YouTube Video/Song Name:</label>
-        <input type = "text" name="youtubeSearch">
-        <input type = "submit" value = "Search">
-    </form>
+    <div id = "formContainer">
+        <form>
+            <label for="youtubeSearch">YouTube Video/Song Name:</label>
+            <input type = "text" name="youtubeSearch">
+            <input type = "submit" value = "Search">
+        </form>
+    </div>
+    
 </div>
 <style>
-    form{
+    #layout{
+        padding:10px;
+        display:flex;
+        flex-direction: column;
+        flex-grow:1;
+    }
+    #formContainer{
+        display:grid;
+        place-items: center;
+        padding:10px;
         background-color: gray;
         border-radius:5px;
-        display: grid;
-        justify-items: center;
-        width:100%;
-        height:64px;
+        max-width:100%;
+        max-height:64px;
     }
     ul{
+        margin:0px;
+        flex-grow:1;
         padding: 0;
         list-style-type: none;
     }

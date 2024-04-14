@@ -9,6 +9,10 @@
 			path:"/about"
 		},
 		{
+			name:"Settings",
+			path:"/settings"
+		},
+		{
 			name:"China",
 			path:"https://bilibili.com"
 		}

@@ -1,23 +1,12 @@
-<script>
-    let selectedFlow = null;
-    let flows = [
-        {
-            name:"Title",
-            icon:"airplay-sharp"
-        },
-        {
-            name:"Title",
-            icon:"airplay-sharp"
-        },
-        {
-            name:"Title",
-            icon:"airplay-sharp"
-        }
-    ];
+<script lang="ts">
+    import { getFlows, setFlows} from "./store";
+    const flows = getFlows();
+    let selectedFlow:flowData | null = null;
+    
 </script>
 <div>
     <div id = "flowList">
-        {#each flows as flow}
+        {#each $flows as flow}
             <button class = "flowItem" on:click={()=>{
                 selectedFlow=flow;
             }} on:blur ={()=>{
