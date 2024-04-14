@@ -5,34 +5,35 @@
     import { selectedFlow } from "./store";
 	import FlowsPlayList from "./FlowsPlayList.svelte";
     $:selectedFlowString="";
+    let addingSongs = false;
     selectedFlow.subscribe((e)=>{
         if(e == null){
             addingSongs = false;
         }
         selectedFlowString=JSON.stringify(e);
     });
-    let addingSongs = false;
+    
 </script>
 {selectedFlowString}
 <div id = "container">
     <div id = "flowInventory">
         <FlowInventory/>
     </div>
-    <div id = "videoSearch">
+    <div id = "songContainer">
         {#if $selectedFlow != null}
             {#if addingSongs}
-                <div on:click={()=>{
-                    addingSongs = false;
-                }}>
-                    <button>Back</button>
+                <div class = "songMenuContainer">
+                    <button on:click={()=>{
+                        addingSongs = false;
+                    }}>Back</button>
                     <SearchForVideo/>
                 </div>
                 
             {:else}
-            <div>
-                <button on:click={()=>{
-                    addingSongs = true;
-                }}>Add Songs</button>
+                <div class = "songMenuContainer">
+                    <button on:click={()=>{
+                        addingSongs = true;
+                    }}>Add Songs</button>
                     <FlowsPlayList/>
                 </div>
             {/if}
@@ -47,15 +48,19 @@
         display:flex;
         flex-direction: row;
     }
+    .songMenuContainer{
+        width:100%;
+        height:100%;
+        display:flex;
+        flex-direction: column;
+    }
     #flowInventory{
         display:flex;
         flex-direction:column;
         flex-grow: 1;
         height:100%;
     }
-    #videoSearch{
-        display:flex;
-        flex-direction: column;
+    #songContainer{
         background-color: darkblue;
         height:100%;
     }
